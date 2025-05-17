@@ -1,72 +1,70 @@
+
 # 🚀 32-bit 5-Stage Pipelined MiniMIPS Processor
 
-This repository contains the design and implementation of a 32-bit, 5-stage pipelined MiniMIPS processor using Verilog. The project explores the use of pipelining to enhance instruction throughput and efficiency in a Reduced Instruction Set Computing (RISC) architecture.
+This repository showcases the design and implementation of a 32-bit MiniMIPS processor with a 5-stage pipelined architecture using Verilog. The MiniMIPS processor enhances instruction throughput by leveraging pipelining techniques, ensuring efficient execution of multiple instructions simultaneously.
 
-## 📑 Table of Contents
+---
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Pipeline Stages](#pipeline-stages)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Simulation Results](#simulation-results)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+## 📖 Overview
 
-## 🌟 Introduction
+The MiniMIPS processor follows the classic 5-stage MIPS pipeline architecture:
+1. **Instruction Fetch (IF):** Retrieves instructions from memory.
+2. **Instruction Decode (ID):** Decodes instructions and fetches operands.
+3. **Execute (EX):** Performs arithmetic/logic operations.
+4. **Memory Access (MEM):** Handles data memory read/write.
+5. **Write Back (WB):** Updates register file with the final result.
 
-Modern embedded systems demand high-performance processors, and RISC architectures like MIPS excel in efficiency and scalability. This project implements a 32-bit MiniMIPS processor in Verilog, leveraging a 5-stage pipeline to execute multiple instructions simultaneously, minimizing execution time and maximizing throughput.
+It includes mechanisms for:
+- **Data Hazard Resolution** through forwarding units.
+- **Control Hazard Handling** with branch prediction and instruction flushing.
 
-Key highlights include:
-- Implementation of **hazard detection** and **data forwarding** mechanisms.
-- Simulation and validation using **ModelSim**.
+---
 
-## ✨ Features
+## 🌟 Features
 
-- **RISC-based Design**: Implements a subset of the MIPS instruction set.
-- **5-Stage Pipeline**: Enhances instruction throughput.
-- **Hazard Management**: 
-  - Data forwarding for reduced stalls.
-  - Branch prediction and hazard detection for smoother execution.
-- **Simulation Support**: Verilog testbench provided.
-- **Scalable Design**: Modular structure for ease of optimization and FPGA implementation.
+- **32-bit Pipelined Processor:** Designed for educational and research purposes.
+- **5-Stage Pipelining:** Maximizes instruction throughput.
+- **Hazard Detection and Forwarding:** Manages pipeline hazards efficiently.
+- **RISC Architecture:** Implements a simplified subset of MIPS instructions.
+- **Verilog Implementation:** Modular, scalable, and ready for FPGA deployment.
 
-## 🛠️ Pipeline Stages
+---
 
-1. **Instruction Fetch (IF)**: Retrieve instructions from memory.
-2. **Instruction Decode (ID)**: Decode instructions and fetch operands.
-3. **Execution (EX)**: Perform arithmetic or logical operations.
-4. **Memory Access (MEM)**: Handle data read/write operations.
-5. **Write Back (WB)**: Update registers with results.
-
-## 📁 Project Structure
+## 🔧 Project Structure
 
 ```plaintext
 .
 ├── src
 │   ├── alu.v              # Arithmetic Logic Unit
-│   ├── control_unit.v     # Control signals
-│   ├── datapath.v         # Main datapath
-│   ├── hazard_unit.v      # Hazard detection and resolution
+│   ├── control_unit.v     # Generates control signals
+│   ├── datapath.v         # Core processor datapath
+│   ├── hazard_unit.v      # Handles data and control hazards
 │   ├── instruction_mem.v  # Instruction memory
-│   ├── register_file.v    # General-purpose registers
-│   └── ...                # Additional modules
-├── simulations
-│   ├── testbench.v        # Verilog testbench
-│   └── results            # Simulation outputs
+│   ├── register_file.v    # Register file with 32 registers
+│   └── other_modules.v    # Additional pipeline components
 ├── docs
-│   └── report.pdf         # Design documentation
+│   └── design_report.pdf  # Detailed design documentation
+├── sim
+│   └── simulation_results # Simulation waveform screenshots
 └── LICENSE                # MIT License
 ````
 
-## 🚀 Getting Started
+---
+
+## 🖼️ Pipeline Diagram
+
+![5-Stage Pipelined Processor](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/MIPS_pipeline.svg/800px-MIPS_pipeline.svg.png)
+
+---
+
+## 🏁 Getting Started
 
 ### Prerequisites
 
-* **Verilog Simulator**: Tools like ModelSim or Xilinx Vivado.
-* **Git**: Version control to clone the repository.
+* **Verilog Simulator:** Tools like ModelSim or Vivado for simulation and verification.
+* **Git:** To clone the repository.
 
-### Setup
+### Steps to Use
 
 1. Clone the repository:
 
@@ -75,30 +73,48 @@ Key highlights include:
    cd 32bit-5stage-pipelined-MiniMIPS
    ```
 
-2. Navigate to the simulation directory and run the testbench:
+2. Open the Verilog files in your simulator and configure the design for simulation.
 
-   ```bash
-   <verilog_simulator> -f testbench.v
-   ```
+3. Analyze the results using waveform viewers to verify the pipeline functionality.
 
-3. Analyze the simulation results in the output files or waveform viewer.
+---
 
-## 📊 Simulation Results
+## 🧪 Results
 
-* **Reduced CPI**: The pipelined architecture improves clock cycles per instruction.
-* **Hazard Management**: Mechanisms like data forwarding minimize stalls.
-* **Validated Functionality**: Correct execution verified via test cases.
+The pipelined MiniMIPS processor was validated using Verilog simulation, yielding the following outcomes:
 
-Simulation outputs can be found in the `simulations/results` directory.
+* **Improved Throughput:** Faster instruction execution compared to non-pipelined designs.
+* **Correct Hazard Handling:** Data forwarding and flushing mechanisms ensured smooth execution without pipeline stalls.
+* **Validated Instruction Set:** All supported instructions executed correctly, maintaining program order.
+
+Simulation results can be found in the `sim/simulation_results` directory.
+
+---
+
+## 👥 Contributors
+
+* **Urmit Kikani** (22BEC137)
+* **Jemit Rathor** (22BEC102)
+
+---
+
+## 🏫 Academic Information
+
+* **Guide:** Prof. Dhaval Shah
+* **Department:** Electronics and Communication Engineering
+* **University:** Nirma University
+
+---
 
 ## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## 🙌 Acknowledgements
+---
 
-* **Guidance**: Prof. Dhaval Shah, Nirma University.
+Feel free to ⭐ this repository if you find it useful, and don't hesitate to contribute or raise issues! 😊
 
-Feel free to ⭐ this repository if you find it helpful and open issues or pull requests for contributions! 😄
+```
 
+This version includes **everything in a single code block** for easy copy-pasting, as per your request.
 ```
