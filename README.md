@@ -1,120 +1,110 @@
 
-# 🚀 32-bit 5-Stage Pipelined MiniMIPS Processor
+# ⚙️ 5-Stage Pipelined miniMIPS Processor
 
-This repository showcases the design and implementation of a 32-bit MiniMIPS processor with a 5-stage pipelined architecture using Verilog. The MiniMIPS processor enhances instruction throughput by leveraging pipelining techniques, ensuring efficient execution of multiple instructions simultaneously.
+An educational Verilog-based implementation of a **5-stage pipelined MIPS processor**, simulating the instruction flow through standard MIPS stages: IF, ID, EX, MEM, and WB. This project is designed to help understand pipelined architecture and hazards in RISC-based processors.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
-## 📖 Overview
+## 📌 Project Details
 
-The MiniMIPS processor follows the classic 5-stage MIPS pipeline architecture:
-1. **Instruction Fetch (IF):** Retrieves instructions from memory.
-2. **Instruction Decode (ID):** Decodes instructions and fetches operands.
-3. **Execute (EX):** Performs arithmetic/logic operations.
-4. **Memory Access (MEM):** Handles data memory read/write.
-5. **Write Back (WB):** Updates register file with the final result.
+- **Title**: 5-Stage Pipelined miniMIPS Processor  
+- **Platform**: Verilog (Simulation on ModelSim / Vivado)  
+- **Developers**: Urmit Kikani (22BEC137), Jemit Rathor (22BEC102)  
+- **Institution**: Nirma University  
+- **Guide**: Prof. Dhaval Shah  
 
-It includes mechanisms for:
-- **Data Hazard Resolution** through forwarding units.
-- **Control Hazard Handling** with branch prediction and instruction flushing.
+---
+
+## 🧠 Block Diagram
+
+![Block Diagram](Block%20Diagram%20of%205%20stages%20pipelined%20miniMIPS/Block%20diagram%20of%205%20stages%20pipelined%20miniMIPS.jpg)
 
 ---
 
 ## 🌟 Features
 
-- **32-bit Pipelined Processor:** Designed for educational and research purposes.
-- **5-Stage Pipelining:** Maximizes instruction throughput.
-- **Hazard Detection and Forwarding:** Manages pipeline hazards efficiently.
-- **RISC Architecture:** Implements a simplified subset of MIPS instructions.
-- **Verilog Implementation:** Modular, scalable, and ready for FPGA deployment.
+- 🔄 **5 Pipeline Stages**: Implements all five classical MIPS pipeline stages:
+  - Instruction Fetch (IF)
+  - Instruction Decode/Register Fetch (ID)
+  - Execute (EX)
+  - Memory Access (MEM)
+  - Write Back (WB)
+
+- 🧰 **Hazard Handling**:
+  - Data hazards managed via forwarding logic and pipeline stalls.
+  - Control hazards reduced using simple branching logic.
+
+- 🧱 **Modular Design**:
+  - Clean and well-separated modules for each stage.
+  - Easy to read, extend, and debug.
 
 ---
 
-## 🔧 Project Structure
+## 🧪 Simulation Instructions
 
-```plaintext
-.
-├── src
-│   ├── alu.v              # Arithmetic Logic Unit
-│   ├── control_unit.v     # Generates control signals
-│   ├── datapath.v         # Core processor datapath
-│   ├── hazard_unit.v      # Handles data and control hazards
-│   ├── instruction_mem.v  # Instruction memory
-│   ├── register_file.v    # Register file with 32 registers
-│   └── other_modules.v    # Additional pipeline components
-├── docs
-│   └── design_report.pdf  # Detailed design documentation
-├── sim
-│   └── simulation_results # Simulation waveform screenshots
-└── LICENSE                # MIT License
-````
+### 📦 Requirements
+
+- Verilog simulation tool such as:
+  - **ModelSim**
+  - **Vivado**
+  - **Icarus Verilog**
+
+### ▶️ How to Run
+
+1. Clone or download this repository.
+2. Open your Verilog simulation tool.
+3. Compile all source files.
+4. Run the simulation and observe instruction flow and register/memory updates.
 
 ---
 
-## 🖼️ Pipeline Diagram
+## 📂 File Structure
 
-![5-Stage Pipelined Processor](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/MIPS_pipeline.svg/800px-MIPS_pipeline.svg.png)
+```
 
----
+📁 5-Stage-MIPS
+├── 📁 Block Diagram of 5 stages pipelined miniMIPS
+│   └── 📄 Block diagram of 5 stages pipelined miniMIPS.jpg
+├── 📁 src
+│   ├── 📄 if\_stage.v
+│   ├── 📄 id\_stage.v
+│   ├── 📄 ex\_stage.v
+│   ├── 📄 mem\_stage.v
+│   ├── 📄 wb\_stage.v
+│   └── 📄 top\_module.v
+├── 📄 README.md
+└── 📄 LICENSE
 
-## 🏁 Getting Started
-
-### Prerequisites
-
-* **Verilog Simulator:** Tools like ModelSim or Vivado for simulation and verification.
-* **Git:** To clone the repository.
-
-### Steps to Use
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/YourUsername/32bit-5stage-pipelined-MiniMIPS.git
-   cd 32bit-5stage-pipelined-MiniMIPS
-   ```
-
-2. Open the Verilog files in your simulator and configure the design for simulation.
-
-3. Analyze the results using waveform viewers to verify the pipeline functionality.
+```
 
 ---
 
-## 🧪 Results
+## 🧱 Pipeline Architecture Summary
 
-The pipelined MiniMIPS processor was validated using Verilog simulation, yielding the following outcomes:
+Each instruction passes through the following stages:
 
-* **Improved Throughput:** Faster instruction execution compared to non-pipelined designs.
-* **Correct Hazard Handling:** Data forwarding and flushing mechanisms ensured smooth execution without pipeline stalls.
-* **Validated Instruction Set:** All supported instructions executed correctly, maintaining program order.
-
-Simulation results can be found in the `sim/simulation_results` directory.
-
----
-
-## 👥 Contributors
-
-* **Urmit Kikani** (22BEC137)
-* **Jemit Rathor** (22BEC102)
-
----
-
-## 🏫 Academic Information
-
-* **Guide:** Prof. Dhaval Shah
-* **Department:** Electronics and Communication Engineering
-* **University:** Nirma University
+1. **IF** – Program counter increments and instruction is fetched.
+2. **ID** – Instruction is decoded and registers are read.
+3. **EX** – ALU performs operation.
+4. **MEM** – Memory read/write operations.
+5. **WB** – Results written back to registers.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Feel free to ⭐ this repository if you find it useful, and don't hesitate to contribute or raise issues! 😊
+## 🙌 Acknowledgments
 
-```
+- Developed as part of coursework under the guidance of faculty at **Nirma University**.
+- Special thanks to **Prof. Dhaval Shah** for mentoring and guidance.
 
-This version includes **everything in a single code block** for easy copy-pasting, as per your request.
+---
+
+Thank you for exploring the 5-Stage Pipelined miniMIPS Processor! ⚙️🚀
 ```
