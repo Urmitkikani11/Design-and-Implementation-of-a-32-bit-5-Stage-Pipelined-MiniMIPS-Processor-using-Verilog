@@ -81,10 +81,13 @@ Each instruction passes through the following stages:
 5. **WB** – Results written back to registers.
 
 ---
+## 🧪 Sample Instruction Tests
 
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
+| Instruction | Purpose          | Expected Behavior                      |
+|-------------|------------------|----------------------------------------|
+| `add $t0,$t1,$t2` | R-type Addition | `$t0 = $t1 + $t2` with forwarding     |
+| `lw $t0, 0($t1)`  | Load Word       | Loads word from memory into `$t0`     |
+| `beq $t1, $t2, label` | Branch Equal | Branch taken if `$t1 == $t2`         |
 
 ---
 
@@ -92,6 +95,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 - Developed as part of coursework under the guidance of faculty at **Nirma University, Ahmedabad**.
 - Special thanks to **Prof. Dhaval Shah** for mentoring and guidance.
+
+---
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
