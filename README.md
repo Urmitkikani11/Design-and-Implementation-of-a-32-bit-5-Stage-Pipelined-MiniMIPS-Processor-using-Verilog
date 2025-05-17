@@ -1,4 +1,3 @@
-
 # ⚙️ 5-Stage Pipelined miniMIPS Processor
 
 An educational Verilog-based implementation of a **5-stage pipelined MIPS processor**, simulating the instruction flow through standard MIPS stages: IF, ID, EX, MEM, and WB. This project is designed to help understand pipelined architecture and hazards in RISC-based processors.
@@ -10,10 +9,12 @@ An educational Verilog-based implementation of a **5-stage pipelined MIPS proces
 ## 📌 Project Details
 
 - **Title**: 5-Stage Pipelined miniMIPS Processor  
-- **Platform**: Verilog (Simulation on ModelSim / Vivado)  
-- **Developers**: Urmit Kikani (22BEC137), Jemit Rathor (22BEC102)  
-- **Institution**: Nirma University  
+- **Platform**: Verilog (Simulation on **ModelSim** and **Quartus**)  
+- **Developers**: Urmit Kikani (22BEC137), Jemit Rathor (22BEC102)
 - **Guide**: Prof. Dhaval Shah  
+- **Department**: Electronics and Communication Engineering  
+- **Institute**: Institute of Technology  
+- **University**: Nirma University, Ahmedabad  
 
 ---
 
@@ -41,43 +42,31 @@ An educational Verilog-based implementation of a **5-stage pipelined MIPS proces
   - Easy to read, extend, and debug.
 
 ---
+## 📊 Instruction Pipeline Example
 
+| Cycle | IF      | ID      | EX      | MEM     | WB      |
+|-------|---------|---------|---------|---------|---------|
+| 1     | Instr 1 |         |         |         |         |
+| 2     | Instr 2 | Instr 1 |         |         |         |
+| 3     | Instr 3 | Instr 2 | Instr 1 |         |         |
+| 4     | Instr 4 | Instr 3 | Instr 2 | Instr 1 |         |
+| 5     | Instr 5 | Instr 4 | Instr 3 | Instr 2 | Instr 1 |
+
+---
 ## 🧪 Simulation Instructions
 
 ### 📦 Requirements
 
-- Verilog simulation tool such as:
-  - **ModelSim**
-  - **Vivado**
-  - **Icarus Verilog**
+- Verilog simulation tools:
+  - **ModelSim** (for simulation and waveform analysis)
+  - **Quartus Prime** (for RTL design, synthesis, and analysis)
 
 ### ▶️ How to Run
 
 1. Clone or download this repository.
-2. Open your Verilog simulation tool.
-3. Compile all source files.
-4. Run the simulation and observe instruction flow and register/memory updates.
-
----
-
-## 📂 File Structure
-
-```
-
-📁 5-Stage-MIPS
-├── 📁 Block Diagram of 5 stages pipelined miniMIPS
-│   └── 📄 Block diagram of 5 stages pipelined miniMIPS.jpg
-├── 📁 src
-│   ├── 📄 if\_stage.v
-│   ├── 📄 id\_stage.v
-│   ├── 📄 ex\_stage.v
-│   ├── 📄 mem\_stage.v
-│   ├── 📄 wb\_stage.v
-│   └── 📄 top\_module.v
-├── 📄 README.md
-└── 📄 LICENSE
-
-```
+2. Open your Verilog tool (ModelSim or Quartus).
+3. Add all source files to your project.
+4. Compile and simulate to observe instruction flow and register/memory updates.
 
 ---
 
@@ -101,10 +90,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 🙌 Acknowledgments
 
-- Developed as part of coursework under the guidance of faculty at **Nirma University**.
+- Developed as part of coursework under the guidance of faculty at **Nirma University, Ahmedabad**.
 - Special thanks to **Prof. Dhaval Shah** for mentoring and guidance.
 
 ---
 
 Thank you for exploring the 5-Stage Pipelined miniMIPS Processor! ⚙️🚀
-```
